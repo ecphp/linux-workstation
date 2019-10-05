@@ -1,0 +1,25 @@
+- name: Register user home directory
+  command: echo ~
+  register: home_directory
+  tags:
+    - always
+
+- name: Store user home directory globally
+  set_fact:
+    home_directory: "{{ home_directory.stdout }}"
+  tags:
+    - always
+
+- name: Install common packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: latest
+  with_items:
+    - curl
+    - git
+    - nano
+    - rsync
+    - unzip
+    - wget
+  become: true

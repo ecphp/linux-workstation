@@ -1,0 +1,2 @@
+composer_path: "{{ home_directory }}/bin"
+composer_bin: "{{ home_directory }}/bin/composer"

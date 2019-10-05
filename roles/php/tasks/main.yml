@@ -1,0 +1,32 @@
+- name: Install PHP packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: latest
+  with_items:
+    - "{{ php_version }}"
+    - "{{ php_version }}-bcmath"
+    - "{{ php_version }}-cli"
+    - "{{ php_version }}-common"
+    - "{{ php_version }}-phpdbg"
+    - "{{ php_version }}-gd"
+    - "{{ php_version }}-gmp"
+    - "{{ php_version }}-intl"
+    - "{{ php_version }}-json"
+    - "{{ php_version }}-ldap"
+    - "{{ php_version }}-mbstring"
+    - "{{ php_version }}-mysqlnd"
+    - "{{ php_version }}-opcache"
+    - "{{ php_version }}-pdo"
+    - "{{ php_version }}-soap"
+    - "{{ php_version }}-xml"
+    - "{{ php_version }}-zip"
+    - php-apcu
+    - php-igbinary
+    - php-mongodb
+    - php-redis
+    - php-xdebug
+    - php-libsodium
+  tags:
+    - php
+  become: true
