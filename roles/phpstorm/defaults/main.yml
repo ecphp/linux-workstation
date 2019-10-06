@@ -1,0 +1,2 @@
+phpstorm_path: "{{ home_directory }}/phpstorm"
+phpstorm_bin: "{{ home_directory }}/phpstorm/PhpStorm-192.6817.20/bin/phpstorm.sh"

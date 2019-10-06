@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PhpStorm
+Icon={{ home_directory }}/phpstorm/PhpStorm-192.6817.20/bin/phpstorm.svg
+Exec="{{ home_directory }}/phpstorm/PhpStorm-192.6817.20/bin/phpstorm.sh" %f
+Comment=Lightning-smart PHP IDE
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-phpstorm
