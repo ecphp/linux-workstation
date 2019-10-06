@@ -1,0 +1,10 @@
+- name: Install docker-compose
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: latest
+  with_items:
+    - docker-compose
+  tags:
+    - docker-compose
+  become: true

@@ -1,0 +1,29 @@
+- name: Install Docker
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: latest
+  with_items:
+    - docker.io
+  tags:
+    - docker
+  become: true
+
+- name: Enable and start Docker service
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+    state: started
+  tags:
+    - docker
+  become: true
+
+- name: Add the default user to the docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: true
+  tags:
+    - docker
+  become: true

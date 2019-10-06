@@ -5,5 +5,7 @@
 - hosts: workstation
   roles:
     - composer
+    - docker
+    - docker-compose
     - php
     - phpstorm
