@@ -9,3 +9,4 @@
     - docker-compose
     - php
     - phpstorm
+    - sqlite
