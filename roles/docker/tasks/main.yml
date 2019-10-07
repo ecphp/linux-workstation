@@ -21,7 +21,7 @@
 
 - name: Add the default user to the docker group
   user:
-    name: ubuntu
+    name: "{{ ansible_user_id }}"
     groups: docker
     append: true
   tags:
