@@ -1,2 +1,2 @@
 [workstation]
-ubuntu ansible_host=localhost ansible_user=ubuntu ansible_connection=local
+ubuntu ansible_host=localhost ansible_connection=local
