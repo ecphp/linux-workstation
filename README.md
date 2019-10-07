@@ -13,7 +13,7 @@ First you need to install git and Ansible on the local machine:
 sudo apt update && sudo apt install git ansible
 ```
 
-Then, execute the playbook using the following command:
+Then, clone this repository, cd into ```linux-workstation``` and execute the playbook using the following command:
 
 ```
 ansible-playbook -i hosts.localhost site.yml --ask-become-pass
