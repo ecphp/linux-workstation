@@ -36,10 +36,3 @@
     state: absent
   tags:
     - phpstorm
-
-- name: Copy menu launcher
-  copy:
-    src: jetbrains-phpstorm.desktop
-    dest: "{{ home_directory }}/.local/share/applications/"
-  tags:
-    - phpstorm
