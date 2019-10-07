@@ -10,7 +10,7 @@ This Ansible playbook installs a working PHP development environment on
 First you need to install git and Ansible on the local machine:
 
 ```
-apt update && apt install git ansible
+sudo apt update && sudo apt install git ansible
 ```
 
 Then, execute the playbook using the following command:
