@@ -5,6 +5,7 @@
     state: latest
   with_items:
     - nodejs
+    - npm
   tags:
     - nodejs
   become: true
