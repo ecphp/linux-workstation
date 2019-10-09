@@ -8,6 +8,7 @@
     - "{{ php_version }}-bcmath"
     - "{{ php_version }}-cli"
     - "{{ php_version }}-common"
+    - "{{ php_version }}-curl"
     - "{{ php_version }}-phpdbg"
     - "{{ php_version }}-gd"
     - "{{ php_version }}-gmp"
