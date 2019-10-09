@@ -37,14 +37,14 @@
   tags:
     - phpstorm
 
-- name: Copy menu launcher
-  copy:
-    src: jetbrains-phpstorm.desktop
-    dest: "{{ home_directory }}/.local/share/applications/"
+- name: Copy launcher
+  template:
+    src: phpstorm.desktop.j2
+    dest: "{{ home_directory }}/.local/share/applications/phpstorm.desktop"
   tags:
     - phpstorm
 
 - name: Add launcher to favorite-apps
-  command: "gsettings set org.gnome.shell favorite-apps \"['ubiquity.desktop', 'firefox.desktop', 'jetbrains-phpstorm.desktop', 'org.gnome.Nautilus.desktop']\""
+  command: "gsettings set org.gnome.shell favorite-apps \"['ubiquity.desktop', 'firefox.desktop', 'phpstorm.desktop', 'org.gnome.Nautilus.desktop']\""
   tags:
     - phpstorm
