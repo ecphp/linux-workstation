@@ -1,0 +1,7 @@
+- name: Install OCI8 extension
+  pear:
+    name: oci8
+    state: present
+  tags:
+    - php-oci
+  become: true
