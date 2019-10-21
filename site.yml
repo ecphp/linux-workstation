@@ -1,13 +1,13 @@
-- hosts: all
-  roles:
-    - common
-
 - hosts: workstation
+  module_defaults:
+    apt:
+      force_apt_get: yes
   roles:
     - composer
     - docker
     - docker-compose
     - nodejs
     - php
+    - php-oci
     - phpstorm
     - sqlite
