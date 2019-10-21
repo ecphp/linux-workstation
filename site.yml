@@ -3,6 +3,7 @@
     apt:
       force_apt_get: yes
   roles:
+    - alien
     - composer
     - docker
     - docker-compose
