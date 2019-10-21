@@ -31,7 +31,7 @@
     - composer
 
 - name: Install Composer
-  command: '{{ php_version }} /tmp/composer-installer.php --install-dir="{{ composer_path }}" --filename="composer"'
+  command: 'php{{ php_version }} /tmp/composer-installer.php --install-dir="{{ composer_path }}" --filename="composer"'
   when: not __composer_bin.stat.exists
   tags:
     - composer
