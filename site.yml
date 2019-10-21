@@ -1,7 +1,4 @@
 - hosts: workstation
-  module_defaults:
-    apt:
-      force_apt_get: yes
   roles:
     - alien
     - composer
