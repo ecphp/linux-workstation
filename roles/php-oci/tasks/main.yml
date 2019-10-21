@@ -1,7 +1,93 @@
+- name: Install libaio
+  apt:
+    name: libaio1
+    update_cache: yes
+    state: latest
+  tags:
+    - php-oci
+  become: true
+
+- name: Check if Oracle libs are already installed
+  stat:
+    path: "{{ oracle_libs_path }}"
+  register: __oracle_libs_path
+  tags:
+    - php-oci
+
+- name: Download Oracle Instant Client rpm package
+  get_url:
+    url: "{{ instantclient_download_url }}"
+    dest: /tmp/instantclient.rpm
+    checksum: "{{ instantclient_checksum }}"
+  when: not __oracle_libs_path.stat.exists
+  tags:
+    - php-oci
+
+- name: Install Oracle Instant Client rpm package
+  command: alien -i /tmp/instantclient.rpm
+  when: not __oracle_libs_path.stat.exists
+  tags:
+    - php-oci
+  become: true
+
+- name: Download Oracle Instant Client devel rpm package
+  get_url:
+    url: "{{ instantclient_devel_download_url }}"
+    dest: /tmp/instantclient-devel.rpm
+    checksum: "{{ instantclient_devel_checksum }}"
+  when: not __oracle_libs_path.stat.exists
+  tags:
+    - php-oci
+
+- name: Install Oracle Instant Client devel rpm package
+  command: alien -i /tmp/instantclient-devel.rpm
+  when: not __oracle_libs_path.stat.exists
+  tags:
+    - php-oci
+  become: true
+
+- name: Check if OCI8 extension is already installed
+  command: pecl list | grep oci8
+  register: __oci8_extension_installed
+  tags:
+    - php-oci
+  become: true
+
 - name: Install OCI8 extension
-  pear:
-    name: oci8
-    state: present
+  command: pecl install oci8
+  when: __oci8_extension_installed.stdout == ''
+  tags:
+    - php-oci
+  become: true
+
+- name: Copy OCI8 ini file
+  copy:
+    src: oci8.ini
+    dest: "{{ oci8_extension_ini_path }}"
+    owner: root
+    group: root
+  tags:
+    - php-oci
+  become: true
+
+- name: Copy Oracle libs conf file
+  template:
+    src: oracle.conf.j2
+    dest: /etc/ld.so.conf.d/oracle.conf
+    owner: root
+    group: root
+  tags:
+    - php-oci
+  become: true
+
+- name: Run ldconfig
+  command: ldconfig
+  tags:
+    - php-oci
+  become: true
+
+- name: Enable OCI8 module - CLI
+  command: phpenmod oci8
   tags:
     - php-oci
   become: true

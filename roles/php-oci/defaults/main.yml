@@ -1,0 +1,6 @@
+instantclient_download_url: "https://yum.oracle.com/repo/OracleLinux/OL6/oracle/instantclient/x86_64/getPackage/oracle-instantclient18.3-basiclite-18.3.0.0.0-3.x86_64.rpm"
+instantclient_checksum: "sha256:aaec181c490b3295444ab4ecc66ba9acc67d6f836c5f88b5e0aa8393b06ab51a"
+instantclient_devel_download_url: "https://yum.oracle.com/repo/OracleLinux/OL6/oracle/instantclient/x86_64/getPackage/oracle-instantclient18.3-devel-18.3.0.0.0-3.x86_64.rpm"
+instantclient_devel_checksum: "sha256:d940e87de857f96ccd461edfd4fe4eb92c3810750bd4f7d87edbcbee2c9f41fc"
+oci8_extension_ini_path: "/etc/php/{{ php_version }}/mods-available/oci8.ini"
+oracle_libs_path: "/usr/lib/oracle/18.3/client64/lib/"
