@@ -1,0 +1,8 @@
+- name: Install alien package management
+  apt:
+    name: alien
+    update_cache: yes
+    state: latest
+  tags:
+    - alien
+  become: true
