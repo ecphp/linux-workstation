@@ -1,6 +1,8 @@
-- name: Install libaio
+- name: Install dependencies
   apt:
-    name: libaio1
+    name:
+      - libaio1
+      - php-dev
     update_cache: yes
     state: latest
   tags:
@@ -46,16 +48,9 @@
     - php-oci
   become: true
 
-- name: Check if OCI8 extension is already installed
-  command: pecl list | grep oci8
-  register: __oci8_extension_installed
-  tags:
-    - php-oci
-  become: true
-
 - name: Install OCI8 extension
   command: pecl install oci8
-  when: __oci8_extension_installed.stdout == ''
+  ignore_errors: yes
   tags:
     - php-oci
   become: true
