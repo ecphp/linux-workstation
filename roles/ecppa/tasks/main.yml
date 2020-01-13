@@ -1,0 +1,6 @@
+- name: Enable EC PPA
+  apt_repository:
+    repo: ppa:ecppa/bionic-backports
+  tags:
+    - ecppa
+  become: true

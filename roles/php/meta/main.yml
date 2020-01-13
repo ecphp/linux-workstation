@@ -1,3 +1,4 @@
 ---
 dependencies:
   - { role: common }
+  - { role: ecppa, when: php_version | version_compare('7.2','>') }
