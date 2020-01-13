@@ -3,4 +3,5 @@
     repo: ppa:ecppa/bionic-backports
   tags:
     - ecppa
+    - php
   become: true
