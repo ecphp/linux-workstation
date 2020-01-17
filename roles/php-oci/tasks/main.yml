@@ -86,3 +86,12 @@
   tags:
     - php-oci
   become: true
+
+- name: Remove libssl-dev
+  apt:
+    name:
+      - libssl-dev
+    state: absent
+  tags:
+    - php-oci
+  become: true
