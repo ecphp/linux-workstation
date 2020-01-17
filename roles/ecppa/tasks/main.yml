@@ -1,6 +1,7 @@
 - name: Enable EC PPA
-  apt_repository:
-    repo: ppa:ecppa/bionic-backports
+  shell: |
+    apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options http-proxy=$HTTP_PROXY 3B4700FF184DD96C0CA6EC601161E5EB47EA8B3A
+    add-apt-repository -y ppa:ecppa/bionic-backports
   tags:
     - ecppa
     - php
