@@ -10,6 +10,20 @@
   tags:
     - always
 
+- name: Configure APT to use HTTP proxy
+  blockinfile:
+    path: /etc/apt/apt.conf.d/99proxy.conf
+    create: yes
+    block: |
+      Acquire {
+        HTTP::proxy "{{ ansible_env.HTTP_PROXY }}";
+        HTTPS::proxy "{{ ansible_env.HTTPS_PROXY }}";
+      }
+  when: "'HTTP_PROXY' in ansible_env"
+  tags:
+    - always
+  become: true
+
 - name: Install common packages
   apt:
     name: "{{ item }}"
