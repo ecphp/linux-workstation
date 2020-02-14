@@ -9,12 +9,25 @@
     - docker
   become: true
 
+- name: Configure Docker to use HTTP proxy
+  blockinfile:
+    path: /etc/systemd/system/docker.service.d/http-proxy.conf
+    create: yes
+    block: |
+      [Service]
+      Environment="HTTP_PROXY={{ ansible_env.HTTP_PROXY }}"
+  when: "'HTTP_PROXY' in ansible_env"
+  tags:
+    - docker
+  become: true
+
 - name: Enable and start Docker service
   systemd:
     name: docker
     enabled: yes
     masked: no
     state: started
+    daemon_reload: yes
   tags:
     - docker
   become: true
