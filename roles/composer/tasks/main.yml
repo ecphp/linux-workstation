@@ -35,7 +35,6 @@
   when: not __composer_bin.stat.exists
   tags:
     - composer
-  become: true
 
 - name: Remove Composer installer
   file:
