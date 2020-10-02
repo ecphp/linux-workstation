@@ -1,11 +1,33 @@
-- name: Install Node.js packages
+- name: Download Node.js installer
+  get_url:
+    url: https://deb.nodesource.com/setup_{{ nodejs_version }}
+    dest: /tmp/nodejs_installer
+    mode: u+rwx
+  tags:
+    - nodejs
+  become: true
+
+- name: Execute Node.js installer
+  command: /tmp/nodejs_installer
+  tags:
+    - nodejs
+  become: true
+
+- name: Install Node.js
   apt:
     name: "{{ item }}"
     update_cache: yes
     state: latest
   with_items:
     - nodejs
-    - npm
+  tags:
+    - nodejs
+  become: true
+
+- name: Remove Node.js installer
+  file:
+    path: /tmp/nodejs_installer
+    state: absent
   tags:
     - nodejs
   become: true
