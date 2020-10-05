@@ -15,11 +15,9 @@
 
 - name: Install Node.js
   apt:
-    name: "{{ item }}"
+    name: nodejs
     update_cache: yes
     state: latest
-  with_items:
-    - nodejs
   tags:
     - nodejs
   become: true
