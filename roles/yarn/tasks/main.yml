@@ -1,44 +1,24 @@
-- name: Get Yarn pubkey
-  get_url:
-    url: https://dl.yarnpkg.com/debian/pubkey.gpg
-    dest: /tmp/yarn_pubkey.pgp
-  tags:
-    - yarn
-  become: true
-
 - name: Add Yarn pubkey
-  command: apt-key add /tmp/yarn_pubkey.pgp
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    state: present
   tags:
     - yarn
   become: true
 
 - name: Enable Yarn repository
-  lineinfile:
-    path: /etc/apt/sources.list.d/yarn.list
-    line: deb https://dl.yarnpkg.com/debian/ stable main
-    owner: root
-    group: root
-    mode: '0644'
-    create: yes
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    state: present
   tags:
     - yarn
   become: true
 
 - name: Install Yarn package
   apt:
-    name: "{{ item }}"
+    name: yarn
     update_cache: yes
     state: latest
-  with_items:
-    - yarn
-  tags:
-    - yarn
-  become: true
-
-- name: Remove temporary files
-  file:
-    path: /tmp/yarn_pubkey.pgp
-    state: absent
   tags:
     - yarn
   become: true
