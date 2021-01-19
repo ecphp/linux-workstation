@@ -37,6 +37,13 @@
   tags:
     - phpstorm
 
+- name: Ensure launcher destination folder exists
+  file:
+    path: "{{ home_directory }}/.local/share/applications/"
+    state: directory
+  tags:
+    - phpstorm
+
 - name: Copy launcher
   template:
     src: phpstorm.desktop.j2
@@ -46,5 +53,6 @@
 
 - name: Add launcher to favorite-apps
   command: "gsettings set org.gnome.shell favorite-apps \"['ubiquity.desktop', 'firefox.desktop', 'phpstorm.desktop', 'org.gnome.Nautilus.desktop']\""
+  ignore_errors: yes
   tags:
     - phpstorm
