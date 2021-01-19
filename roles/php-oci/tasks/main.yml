@@ -49,7 +49,7 @@
   become: true
 
 - name: Install OCI8 extension
-  command: pecl install oci8
+  command: pecl install {{ oci8_version }}
   ignore_errors: yes
   tags:
     - php-oci
