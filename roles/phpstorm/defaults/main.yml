@@ -1,5 +1,5 @@
-phpstorm_version: "PhpStorm-202.6397.115"
-phpstorm_download_url: "https://download.jetbrains.com/webide/PhpStorm-2020.2.tar.gz"
-phpstorm_checksum: "sha256:4c6e93791ffb59e43ef055a35e348ceaf36562dcc5b1a520ea76477bb858b0ff"
+phpstorm_version: "PhpStorm-211.7628.25"
+phpstorm_download_url: "https://download-cdn.jetbrains.com/webide/PhpStorm-2021.1.4.tar.gz"
+phpstorm_checksum: "sha256:d4100d919715fb218e37cd7ea99cce51f7c22bc41406a7482fa2cabb04452a5d"
 phpstorm_path: "{{ home_directory }}/.phpstorm"
 phpstorm_bin: "{{ phpstorm_path }}/{{ phpstorm_version }}/bin/phpstorm.sh"
