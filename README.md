@@ -2,6 +2,8 @@
 
 ## About
 
+NOTE: This project is deprecated and superseded by [ECGALAXY components](https://code.europa.eu/ecgalaxy).
+
 This Ansible playbook installs a development environment on
 [Ubuntu 18.04 LTS](http://releases.ubuntu.com/18.04/).
 
